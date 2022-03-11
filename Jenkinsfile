@@ -16,7 +16,7 @@ pipeline {
         }
         stage ('3rd Stage SonarQube analysing') {
             steps {
-                    withSonarQubeEnv('SonarQube') {
+                    withSonarQubeEnv(installationName: 'sq1') {
                         sh 'mvn clean verify sonar:sonar'
                 }
                 waitForQualityGate abortPipeline: true
