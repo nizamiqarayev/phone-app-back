@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    tools {
-
-    }
     stages {
         stage ('1st Stage Compiling') {
             steps {
