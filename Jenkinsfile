@@ -22,13 +22,6 @@ pipeline {
                 waitForQualityGate abortPipeline: true
             }
         }
-//         stage('4th Stage Building Docker Image') {
-//             steps {
-//                  script {
-//                      sh 'docker build -t orkhan2000/phone-app-backend .'
-//                  }
-//             }
-//         }
         stage('5th Deploying to Docker Hub') {
             steps {
                  script {
