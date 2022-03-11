@@ -14,12 +14,11 @@ pipeline {
                     sh 'mvn test'
             }
         }
-        stage ('3rd Stage SonarQube analysing') {
+        stage('4th Stage Building Docker Image') {
             steps {
-                    withSonarQubeEnv(installationName: 'sq1') {
-                        sh 'mvn clean verify sonar:sonar'
-                }
-                waitForQualityGate abortPipeline: true
+                 script {
+                     sh 'docker build -t orkhan2000/phone-app-backend .'
+                 }
             }
         }
         stage('5th Deploying to Docker Hub') {
