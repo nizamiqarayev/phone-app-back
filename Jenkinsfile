@@ -3,21 +3,21 @@ pipeline {
     stages {
         stage ('1st Stage Compiling') {
             steps {
-                withMaven(maven : 'maven_3') {
+                withMaven(maven : 'maven-3') {
                     sh 'mvn clean compile'
                 }
             }
         }
         stage ('2nd Stage Testing') {
             steps {
-                withMaven(maven : 'maven_3') {
+                withMaven(maven : 'maven-3') {
                     sh 'mvn test'
                 }
             }
         }
         stage ('3rd Stage SonarQube analysing') {
             steps {
-                withMaven(maven : 'maven_3') {
+                withMaven(maven : 'maven-3') {
                     withSonarQubeEnv('SonarQube') {
                         sh 'mvn clean verify sonar:sonar'
                     }
