@@ -25,7 +25,7 @@ pipeline {
         stage('5th Deploying to Docker Hub') {
             steps {
                  script {
-                     withCredentials([string(credentialsId: 'Docker-Hub-Password', variable: 'dockerhubpwd')]) {
+                     withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
                          sh 'docker login -u orkhan2000 -p ${dockerhubpwd}'
                      }
                      sh 'docker push  orkhan2000/phone-app-backend'
