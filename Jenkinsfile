@@ -18,7 +18,7 @@ pipeline {
         stage('4th Stage Building Docker Image') {
             steps {
                  script {
-                     sh 'docker build -t orkhan2000/phone-app-backend .'
+                     sh 'mvn clean install && docker build -t orkhan2000/phone-app-backend .'
                  }
             }
         }
