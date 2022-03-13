@@ -24,13 +24,8 @@ pipeline {
         stage('5th Deploying to Docker Hub') {
             steps {
                  script {
-                     withCredentials([usernamePassword(
-                       credentialsId: 'dockerhubpwd',
-                       usernameVariable: 'orkhan2000',
-                       passwordVariable: 'orkhan197324'
-                     )]
-                     ) {
-                         sh 'docker login -u orkhan2000 -p orkhan197324'
+                     withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
+                         sh 'docker login -u orkhan2000 -p ${dockerhubpwd}'
                      }
                      sh 'docker push  orkhan2000/phone-app-backend'
                  }
