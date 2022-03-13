@@ -14,7 +14,6 @@ pipeline {
                     sh 'mvn test'
             }
         }
-
         stage('4th Stage Building Docker Image') {
             steps {
                  script {
@@ -25,8 +24,13 @@ pipeline {
         stage('5th Deploying to Docker Hub') {
             steps {
                  script {
-                     withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
-                         sh 'docker login -u orkhan2000 -p ${dockerhubpwd}'
+                     withCredentials([usernamePassword(
+                       credentialsId: 'dockerhubpwd',
+                       usernameVariable: 'orkhan2000',
+                       passwordVariable: 'orkhan197324'
+                     )]
+                     ) {
+                         sh 'docker login -u orkhan2000 -p orkhan197324'
                      }
                      sh 'docker push  orkhan2000/phone-app-backend'
                  }
