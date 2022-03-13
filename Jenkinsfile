@@ -14,14 +14,14 @@ pipeline {
                     sh 'mvn test'
             }
         }
-        stage('4th Stage Building Docker Image') {
+        stage('3th Stage Building Docker Image') {
             steps {
                  script {
                      sh 'mvn clean install && docker build -t orkhan2000/phone-app-backend .'
                  }
             }
         }
-        stage('5th Deploying to Docker Hub') {
+        stage('4th Deploying to Docker Hub') {
             steps {
                  script {
                      withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
